@@ -1,0 +1,393 @@
+@import url("S-Core-Dream-light/s-core-dream.css");
+
+.bodyletter {
+    font-family: "s-core-dream-light", sans-serif !important;
+    color: #000000;
+    padding: 1%;
+    font-size: medium;
+}
+#Menu {
+    height: 50px; 
+    width: 95%;
+}
+#Menu ul li {          
+    list-style: none;          
+    color: rgb(53, 53, 53);               
+    background-color: #e0e0e0;
+    float: left;              
+    line-height: 30px;         
+    vertical-align: middle;     
+    text-align: center;  
+    width: 20%;      
+}
+#Menu .menuLink {                               
+    text-decoration:none;                      
+    color: rgb(37, 37, 37);                          
+    display: block;                                                
+    font-size: 16px;
+    transition-property: all;
+    transition-duration: 0.3s;                                             
+}
+#Menu .menuLink:hover {          
+    color: rgb(190, 190, 190);                   
+    background-color: #4d4d4d;   
+}
+.title {
+    text-align: center;
+    letter-spacing: 0.5em;
+    font-size: 250%;
+}
+.title2 {
+    text-align: center;
+    margin-top: 15%; 
+    font-size: 200%; 
+    letter-spacing: 0.5em;
+}
+.title3 {
+    text-align: center;
+    font-size: 170%; 
+    letter-spacing: 0.5em;
+}
+.title4 {
+    text-align: center;
+    font-size: x-large; 
+    letter-spacing: 0.2em;
+}
+.bg1 {
+    position:relative;
+    width: 100%;
+    height: 100%; 
+    object-fit:cover;
+}
+h2.name {
+    margin-right: 3em;
+    letter-spacing: 0.2em;
+    color: black;
+}
+p.birth {
+    text-align: right;
+    color: black; 
+    font-size: medium; 
+    text-shadow: none;
+}
+.home {
+    background-clip: border-box;
+    background-image: url(images/bg3.jpg);
+    background-size: cover;
+    background-position: center;
+    text-align: right;
+    padding-right: 10px;
+    padding-bottom: 13em;
+    font-size: x-large;
+    color:ivory;
+    text-shadow: 1px 1px 1px black;    
+    position: relative;
+}
+.home2 {
+    
+    width: 30%;
+    padding: 3px;
+    padding-right: 10px;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.7);
+    position: relative; top: -200px; right: -69%;
+    text-align: right;
+    color: ivory;
+    text-shadow: 1px 1px 1px black;
+    font-size: 1.2em;
+
+}
+.career {
+    float: left;
+    width: 45%;
+    height: 60%;
+    position: absolute; left: 50px; top: 1700px;;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.7);
+    color: ivory;
+    text-shadow: 1px 1px 1px black;
+    font-size: 95%;
+    line-height: 200%;
+    letter-spacing: 0.1em;
+}
+.career2 {
+    text-align: center;
+    letter-spacing: 0.5em;
+    float: left;
+    width: 45%;
+    height: 37%;
+    padding: 10% 0 0 0;
+    position: absolute; left: 50px; top: 1700px;;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.9);
+    color: ivory;
+    text-shadow: 1px 1px 1px black;
+    font-size: 300%;
+    line-height: 150%;
+    transition-duration: 0.5s;
+    transition-property: all;
+}
+.career2:hover {
+    opacity: 0%;
+}
+.awards {
+    float: right;
+    width: 45%;
+    height: 60%;
+    position: absolute; z-index: 1; right: 50px; top: 1700px;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.7);
+    color: ivory;
+    text-shadow: 1px 1px 1px black;
+    font-size: 95%;
+    line-height: 200%;
+    letter-spacing: 0.1em;
+}
+.awards2 {
+    text-align: center;
+    letter-spacing: 0.5em;
+    float: right;
+    width: 45%;
+    height: 37%;
+    padding: 10% 0 0 0;
+    position: absolute; z-index: 1; right: 50px; top: 1700px;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.9);
+    color: ivory;
+    text-shadow: 1px 1px 1px black;
+    font-size: 300%;
+    line-height: 150%;
+    transition-duration: 0.5s;
+    transition-property: all;
+}
+.awards2:hover {
+    opacity: 0%;
+}
+.research {
+    width: 70%;
+    height: 100%;
+    padding: 20px 0 20px 20px;
+    position: relative; left:15%;
+    background-clip: padding-box;
+    background-color: rgba(000, 000, 000, 0.2);
+    color: rgb(0, 0, 0);
+    font-size: 95%;
+    line-height: 200%;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+#footer {
+    
+    flex: 1;
+    background-color: #334d61;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4% 1% 4% 1%;
+    line-height: 170%;
+    width: 100%;
+}
+.footer-container {
+    display: flex;
+    font-size: 0.8rem;
+    flex-direction: column;
+    margin: 0 50px 0 30px ;
+    width: 40%;
+}
+
+.cards {
+    padding: 20px;
+    float: left;
+}
+  
+.card {
+    width: 300px;
+    height: 500px;
+    margin: 85px;
+    position: relative;
+    float:left;
+    perspective: 600px;
+    font-size: 300%;
+    color:#ffffff;
+}
+  
+.card .face {
+    width: 300px;
+    height: 500px;
+    border: 2px solid rgb(122, 122, 122);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    position:absolute;
+    backface-visibility: hidden;
+    background-color: #312935;
+ 
+}
+  
+.card .face-front {
+
+    transform: rotateY(0deg);
+}
+  
+.card:hover .face-front {
+    transform: rotateY(-180deg);
+}
+
+.card .face-back {
+    transform: rotateY(180deg);
+}
+  
+.card:hover .face-back{
+    transform: rotateY(0deg);
+}
+
+.card .face-back img {
+    width: 80%;
+}
+
+img.scale {
+    width: 10%;
+    border-radius: 5%;
+    transition-property: all;
+    transition-duration: 0.5s;
+    margin: 2%;
+    
+}
+img.scale:hover {
+    transform: scale(1.5);
+}
+
+header {
+    text-align: center;
+}
+
+#calendar {
+    width: 100%;  
+}
+  
+#calendar a {
+    color: #8e352e;
+    text-decoration: none;
+}
+  
+#calendar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+  
+#calendar li {
+    display: block;
+    float: left;
+    width:14.342%;
+    padding: 5px;
+    box-sizing:border-box;
+    border: 1px solid #ccc;
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+  
+#calendar ul.weekdays {
+    height: 40px;
+    background: #1d3d49;
+}
+  
+#calendar ul.weekdays li {
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 20px;
+    border: none !important;
+    padding: 10px 6px;
+    color: #fff;
+    font-size: 13px;
+}
+  
+#calendar .days li {
+    height: 100px;
+}
+  
+#calendar .days li:hover {
+    background: #d3d3d3;
+}
+  
+#calendar .date {
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+}
+  
+#calendar .event {
+    clear: both;
+    display: block;
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    line-height: 14px;
+    background: #e6ffa2;
+    border: 1px solid #d8d8d8;
+    color: #000000;
+    text-decoration: none;
+}
+  
+#calendar .event-desc {
+    color: #666;
+    margin: 3px 0 7px 0;
+    font-size: 10%;
+}
+#calendar .event-time {
+    color: #666;
+    font-size: 10%;
+}
+  
+#calendar .other-month {
+    background: #f5f5f5;
+    color: #666;
+}
+  
+img.link {
+    width: 7%;
+    margin: 3px;
+    transition-duration: 0.2s;
+}
+img.link:hover {
+    opacity: 60%;
+    transform: scale(1.1);
+}
+img.top {
+    width: 5%;
+    margin-top: 200px;
+    margin-left: 48%;
+}
+@media(max-width: 768px) {
+  
+    #calendar .weekdays, #calendar .other-month {
+      display: none;
+    }
+  
+    #calendar li {
+      height: auto !important;
+      border: 1px solid #ededed;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: -1px;
+    }
+  
+    #calendar .date {
+      float: none;
+    }
+}

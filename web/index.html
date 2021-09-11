@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta name="description" content="Web Programming Final Assignment" />
+        <meta name="author" content="Seo Byeong Jun" />
+        <title>17011806 Seo Byeong Jun</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="css/images/rocket.ico">
+    </head>
+
+<h1 class="title"><br>PRP : Proper Recycle Please<br><br></h1>
+<nav id="Menu">
+            <ul>
+                    <li><a class="menuLink" href="#about">About</a></li>
+                    <li><a class="menuLink" href="#model">Model</a></li>
+                    <li><a class="menuLink" href="#data">Data</a></li>
+                    <li><a class="menuLink" href="#platform">Platform</a></li>
+                    <li><a class="menuLink" href="#feedback">Feedback</a></li>
+            </ul>
+      </nav>
+ <div>
+        <h2 class="name" style="text-align: center"><br><br>투명 페트병을 분리배출 하시려면 버튼을 누르고 카메라에 비춰주세요.</h2>
+</div>
+<!-- <div>Teachable Machine Image Model</div> -->
+<button type="button" style="margin-left: 47%" onclick="init()">확인하기</button>
+<br><br><br>
+<div id="webcam-container" style="margin-left: 35%"></div>
+<div id="label-container" style="margin-left: 35%"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "./my_model/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(500, 500, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+<br><br><br><br><br><br><br><br>
+<h4 id="about" class="title3" style="font-size: 200%">About</h4>
+<img class="scale" style="margin-left: 40%; width: 20%;" src="css/images/111.jpeg">
+<div>
+        <h2 class="name" style="text-align: center; font-size: 100%; line-height: 200%;"><br><br>현대 사회를 살아가는 우리들에게 귀찮아도 꼭 해야하는 일이 있습니다. 바로 분리수거죠. <br>그 중에서도 투명 페트병 분리수거는 많은 사람들이 헷갈려하는 부분입니다.<br> 보통 페트병은 플라스틱류로 분류됩니다.<br>지나가다 분리수거장이 보여도 물이나 음료를 마시고 그대로 플라스틱으로 분리수거 하는 경우가 다반사죠.<br>하지만 환경부의 지침에 따르면 투명 페트병은 따로 투명 페트병 전용배출 수거함에 버려야 하며,<br>버릴 때는 속을 모두 깨끗하게 비우고 겉에 붙어있는 라벨도 모두 제거해야 합니다.<br>물이 아닌 음료가 들어 있을 경우 오염의 문제가 발생하고,<br>라벨의 경우 잉크로 인한 재활용 가치 감소, 그리고 분리 과정에서의 공정비용과 인력의 문제까지 존재합니다. <br><br>그럼에도 불구하고 많은 사람들은 이 사실을 모르거나, 알면서도 잘 지키지 않습니다.<br>심지어 구청 분리수거장에만 가봐도 구청 직원들이 무심코 버려놓은 페트병들이 있다고 합니다. <br><br>적절한 재활용, 이제는 필요합니다.</h2>
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<h4 id="model" class="title3" style="font-size: 200%">Model</h4>
+<img class="scale" style="margin-left: 40%; width: 20%;" src="css/images/222.png">
+<div>
+        <h2 class="name" style="text-align: center; font-size: 100%; line-height: 200%;"><br><br>분리수거장에 투명페트병 전용배출을 위한 수거 기계를 만든다고 가정해봅시다.<br>여러 부분에서 인공지능을 활용할 수 있겠지만 그 중에서도 가장 초기 단계,<br>물을 제외한 내용물의 유무와 라벨의 부착 여부를 판단하는 과정에서<br>Teachable Machine을 활용해보았습니다.<br><br><br>
+
+        먼저 분류할 클래스를 네 개로 설정했습니다. 투명 페트병이 이미지로 입력되었을 때,<br><br>
+        - 해당 페트병의 내용물이 없고, 라벨이 제거된 상태라면 Proper,<br>
+        - 라벨은 없으나 내용물이 있으면 not empty, <br>
+        - 내용물은 없으나 라벨을 떼지 않은 상태라면 label not removed<br>
+        - 라벨과 내용물이 함께 있는 상태라면 두 상태를 동시에 나타내는 클래스까지 설정해 보았습니다.<br><br>
+
+        각각에 대한 입력은 실제 웹캠을 사용하여 제 집에 있던 생수병과 콜라병을 포함한 다양한 투명페트병을 활용했습니다.</h2>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<h4 id="data" class="title3" style="font-size: 200%">Data</h4>
+<img class="scale" style="margin-left: 40%; width: 20%;" src="css/images/333.png">
+<div>
+        <h2 class="name" style="text-align: center; font-size: 100%; line-height: 200%;"><br><br>S사의 생수병,<br>C사의 콜라병,<br>L사와 W사의 보리차병을 이용했으며,<br>각각 라벨을 떼고 내용물을 넣었다가 비웠다가 하며 학습 데이터를 모았습니다.<br>보통 사람들이 손으로 들고 카메라 앞에 설 것을 고려하여<br>학습 자체도 손으로 잡은 모습이 나오도록 사진을 찍었습니다.<br><br><br>
+
+        각 클래스마다 약 400~600장 가량의 이미지 데이터로 정리하였습니다.<br><br>
+    </h2>
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<h4 id="platform" class="title3" style="font-size: 200%">Platform</h4>
+<img class="scale" style="margin-left: 40%; width: 20%;" src="css/images/444.png">
+<div>
+        <h2 class="name" style="text-align: center; font-size: 100%; line-height: 200%;"><br><br>해당 인공지능은 코딩이 필요 없는 <br><br>Teachable Machine<br><br>사이트에서 데이터 입력과 학습, 모델 생성까지 완성했습니다.<br>이미지 프로젝트 뿐만 아니라 <br>오디오 프로젝트까지 해볼 수 있는 유용한 플랫폼입니다.<br><br><br>
+    </h2>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<h4 id="feedback" class="title3" style="font-size: 200%">Feedback</h4>
+<img class="scale" style="margin-left: 40%; width: 20%;" src="css/images/bg1.jpg">
+<div>
+        <h2 class="name" style="text-align: center; font-size: 100%; line-height: 200%;"><br><br>이렇게 만든 모델은 카메라에 연결하여 많은 사람들이 이용하는 분리수거장이나,<br>투명 페트병 개별 분리 기계 등에 사용할 수 있을 것입니다.<br>proper class로 분류됐을 때만 뚜껑을 열어주는 등의 기능을 추가하면 좋겠죠.<br><br>추가적으로 해당 페트병이 투명 페트병인지 유색 페트병인지 자체도 분류해야 할 것이며,<br>만약 사이다나 탄산수 등이 들어있을 경우에는 물과 구분하기 힘들 것 같다는 생각도 듭니다.<br>내용물의 유무는 비전으로 처리하기보다<br>무게 센서 등을 활용하는 것이 훨씬 효율적일 것 같습니다.<br><br><br>이처럼 생활 속 사소한 부분에서도 인공지능을 활용할 수 있습니다.<br>우리도 마찬가지로 그런 사소한 부분에 조금씩 신경을 쓰다 보면<br><br>더 깨끗한,<br>더 나은 세상을 만들어갈 수 있지 않을까요?<br><br><br>
+    </h2>
+</div>
+
+
+<a href="#top"><img class="top" src="css/images/top.png"></a>
+          <div id="footer" style="float: left; margin-top: 50px;">
+            <div class="footer-container">
+                <div id="footer-link-container">
+                    <img class="link" src="css/images/insta.png" onclick="location.href='https://www.instagram.com/givenbottle'">
+                    <img class="link" src="css/images/facebook.png" onclick="location.href='https://www.facebook.com/profile.php?id=100006488599567'">
+                    <img class="link" src="css/images/github.png" onclick="location.href='https://github.com/sbj6364'">
+
+                </div>
+            <span></span>
+            <span>Sejong University 209, Neungdong-ro, Gwangjin-gu, Seoul, Republic of
+            Korea (05006)</span>
+            <span>Artificial Intelligence 2st week assignment</span>
+            </span style="text-align:center">Copyright 2021. Seo Byeong Jun all rights reserved.</span>
+            </div>
+            <div class="footer-container" id="footer-container-right">
+              <span>17011806 서병준 <b>Seo Byeong Jun</b></span>
+              <span>세종대학교 지능기전공학부 스마트기기공학전공 (Smart Device Engineering, IME, Sejong Univ.)</span>
+              <span>TEL : 010-4181-6364 (Available Hours: 09:00 ~ 24:00) </span>
+              <span>EMAIL : <a href="mailto:sbjun1126@gmail.com" title="E-mail" style="color: lightgray;" >sbjun1126@gmail.com</a></span>
+            </div>
+          </div>
+    </body> 
+
+</html>
